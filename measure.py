@@ -56,9 +56,9 @@ if __name__ == "__main__":
         xs.append(float(n))
         ys.append(math.log2(tried))
         print(
-            f"  {n:>2} bits: {a!r} & {b!r} | "
-            f"hashes={tried:,} | expected={round(exp):,} | "
-            f"ratio={tried / exp:.2f} | {dt:.2f}s"
+            f"Bits: {n:>2} | String A: {a!r} | String B:{b!r} | "
+            f" Hashes: {tried:,} | Prediction: {round(exp):,} | "
+            f" Ratio: {tried / exp:.2f} | Time: {dt:.2f} |"
         )
 
     mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
