@@ -34,3 +34,34 @@ def find_collision(nbits: int, limit: int = 1 << 26) -> tuple[str, str, int]:
             return seen[t].decode(), m.decode(), i + 1
         seen[t] = m
     raise RuntimeError(f"No collision found within {limit} hashes")
+
+if __name__ == "__main__":
+    av = avalanche(trials=2000, msglen=32, seed=20357)
+    print(f"Avalanche ({len(av)} trials): mean={sum(av)/len(av):.2f}, min={min(av)}, max={max(av)}")
+
+    bins: dict[int, int] = {}
+    for c in av:
+        k = 96 + (max(96, min(159, c)) - 96) // 8 * 8
+        bins[k] = bins.get(k, 0) + 1
+    for k in sorted(bins):
+        print(f"  [{k:>3}, {k+7:>3}]: {bins[k]}")
+
+    print("\nBirthday bound:")
+    xs, ys = [], []
+    for n in (16, 20, 24, 28, 32, 36):
+        t0 = time.time()
+        a, b, tried = find_collision(n)
+        dt = time.time() - t0
+        exp = math.sqrt(math.pi / 2) * (2 ** (n / 2))
+        xs.append(float(n))
+        ys.append(math.log2(tried))
+        print(
+            f"  {n:>2} bits: {a!r} & {b!r} | "
+            f"hashes={tried:,} | expected={round(exp):,} | "
+            f"ratio={tried / exp:.2f} | {dt:.2f}s"
+        )
+
+    mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
+    slope = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
+    intercept = my - slope * mx
+    print(f"\nFitted line: log2(hashes) = {slope:.4f} * n + ({intercept:.4f})")

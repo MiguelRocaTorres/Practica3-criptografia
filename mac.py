@@ -10,7 +10,7 @@ def naive_mac(key: bytes, msg: bytes) -> bytes:
 def naive_verify(key: bytes, msg: bytes, tag: bytes) -> bool:
     return hmac.compare_digest(naive_mac(key, msg), tag)
 
-def hmac(key: bytes, msg: bytes) -> bytes:
+def hmac_sha256(key: bytes, msg: bytes) -> bytes:
     if len(key) > BLOCK:
         key = S.sha256(key)
     key = key + b'\x00' * (BLOCK - len(key))
