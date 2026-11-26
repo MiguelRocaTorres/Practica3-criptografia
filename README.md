@@ -20,7 +20,7 @@ python measure.py
 python forge.py
 
 # Part D: Crack the eight unsalted SHA-256 hashes (download SecLists top 100k wordlist first)
-curl -L -o wordlist.txt [https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/xato-net-10-million-passwords-100000.txt](https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/xato-net-10-million-passwords-100000.txt)
+curl -L -o wordlist.txt https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/xato-net-10-million-passwords-100000.txt
 python crack.py wordlist.txt
 ```
 
