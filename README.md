@@ -41,16 +41,7 @@ Measured over **2,000 trials** (`msglen = 32`, `seed = 20357`), flipping one ran
 * **Difference from theory:** `+0.29` bits (`+0.23%`)
 * **Minimum / Maximum:** `102` / `162` bits
 
-| Changed bits (bin) | Count |
-| --- | ---: |
-| `[ 96, 103]` | 2 |
-| `[104, 111]` | 33 |
-| `[112, 119]` | 231 |
-| `[120, 127]` | 645 |
-| `[128, 135]` | 724 |
-| `[136, 143]` | 313 |
-| `[144, 151]` | 45 |
-| `[152, 159+]`* | 7 |
+<img width="497" height="187" alt="Captura de pantalla 2026-11-26 113953" src="https://github.com/user-attachments/assets/15e77fc4-e396-4229-9d54-2f573c7f54e7" />
 
 *\*The top bin includes the maximum observed value (`162`), as values above `159` were grouped into the last bin.*
 
@@ -112,22 +103,12 @@ HMAC computes $\text{SHA-256}((K' \oplus \text{opad}) \parallel \text{SHA-256}((
 * **Total hashes computed:** **50** (all 8 passwords appeared within the top 50 entries, so `crack_unsalted` stopped early).
 * **Elapsed time:** **0.001 s**.
 
-| SHA-256 Hash | Recovered Password |
-| --- | --- |
-| `6382deaf1f5dc6e792b76db4a4a7bf2ba468884e000b25e7928e621e27fb23cb` | `football` |
-| `a941a4c4fd0c01cddef61b8be963bf4c1e2b0811c037ce3f1835fddf6ef6c223` | `sunshine` |
-| `203b70b5ae883932161bbd0bded9357e763e63afce98b16230be33f0b94c2cc5` | `trustno1` |
-| `a9c43be948c5cabd56ef2bacffb77cdaa5eec49dd5eb0cc4129cf3eda5f0e74c` | `dragon` |
-| `e4ad93ca07acb8d908a3aa41e920ea4f4ef4f26e7f86cf8291c5db289780a5ae` | `iloveyou` |
-| `65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5` | `qwerty` |
-| `000c285457fc971f862a79b786476c78812c8897063c6fa9c045f579a3b2d63f` | `monkey` |
-| `1c8bfe8f801d79745c4631d09fff36c82aa37fc4cce4fc946683d7b336b63032` | `letmein` |
+<img width="701" height="230" alt="Captura de pantalla 2026-11-26 114412" src="https://github.com/user-attachments/assets/3481baa9-4ca2-4c72-863c-bd2cd02a97e4" />
+
 
 ### Database Rows for `123456`
 
-* **Unsalted (`SHA-256("123456")`):** `8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92`
-* **Salt `a3f1c0d94e2b7865` (`SHA-256(salt || "123456")`):** `3982dc6b270d4efa6654080c616e7001ee31148d48a44a79129ea1ec47052caa`
-* **Salt `7b2e4f81cc09a512` (`SHA-256(salt || "123456")`):** `4cfd6301e91c2f90dc044561097abc13a1d5a7d9d7c8534cc5538cd65ce7f887`
+<img width="803" height="88" alt="Captura de pantalla 2026-11-26 114456" src="https://github.com/user-attachments/assets/ca1d6464-efa4-405e-812c-40da96f1b19f" />
 
 ### Cost of a Per-User Salt (500 Users)
 
